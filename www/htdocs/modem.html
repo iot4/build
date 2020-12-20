@@ -1,0 +1,412 @@
+    <!-- Container -->
+    <div class="w3-container w3-content w3-margin-bottom">
+
+      <!-- LTE MODEM -->
+      <div id="LteModem" class="ncd-card subpage w3-padding-16">
+        <h5 class="ncd-section-heading">Device Information</h5>
+        <table class="ncd-table">
+          <tr>
+            <td>Manufacturer</td>
+            <td>$MODEMVendor</td>
+          </tr>
+          <tr>
+            <td>Model</td>
+            <td>$MODEMModel</td>
+          </tr>
+          <tr>
+            <td>Revision</td>
+            <td>$MODEMRev</td>
+          </tr>
+          <tr>
+            <td>IMEI</td>
+            <td>$MODEMIMEI</td>
+          </tr>
+        </table>
+
+        <h5 class="ncd-section-heading">SIM Card Information</h5>
+        <table class="ncd-table">
+          <tr>
+            <td>PIN</td>
+            <td>$MODEMPIN</td>
+          </tr>
+          <tr>
+            <td>ICCID</td>
+            <td>$MODEMICCID</td>
+          </tr>
+        </table>
+
+        <h5 class="ncd-section-heading">Signal Condition</h5>
+        <table class="ncd-table">
+          <tr>
+            <td>Signal Quality (<b>CSQ</b>)</td>
+            <td>$MODEMSig</td>
+          </tr>
+          <tr>
+            <td>Extended Signal Quality (<b>CESQ</b>)</td>
+            <td>$MODEMESQ</td>
+          </tr>
+        </table>
+
+        <h5 class="ncd-section-heading">MNO Profile</h5>
+        <table class="ncd-table">
+          <tr>
+            <td>Network Operator (<b>UMNOPROF</b>)</td>
+            <td onclick="showModalWithCmd('modalSendAtCommand', 'UMNOPROF')">$MODEMUMNOProf</td>
+          </tr>
+          <tr>
+            <td>Mobile Bands (<b>UBANDMASK</b>)</td>
+            <td onclick="showModalWithCmd('modalSendAtCommand', 'UBANDMASK')">$MODEMUMask</td>
+          </tr>
+          <tr>
+            <td>Radio Access Technology (<b>URAT</b>)</td>
+            <td onclick="showModalWithCmd('modalSendAtCommand', 'URAT')">$MODEMURAT</td>
+          </tr>
+          <tr>
+            <td>Power Saving Mode (<b>CPSMS</b>)</td>
+            <td onclick="showModalWithCmd('modalSendAtCommand', 'CPSMS')">$MODEMPSMS</td>
+          </tr>
+          <tr>
+            <td>eDRX Settings (<b>CEDRXS</b>)</td>
+            <td onclick="showModalWithCmd('modalSendAtCommand', 'CEDRXS')">$MODEMEDRXS</td>
+          </tr>
+          <tr>
+            <td>PDP Context (<b>CGDCONT</b>)</td>
+            <td onclick="showModalWithCmd('modalSendAtCommand', 'CGDCONT')">$MODEMPDP</td>
+          </tr>
+          <tr>
+            <td>Service Domain (<b>USVCDOMAIN</b>)</td>
+            <td onclick="showModalWithCmd('modalSendAtCommand', 'USVCDOMAIN')">$MODEMUSVCD</td>
+          </tr>
+          <!--
+          <tr>
+            <td>Network Registration (<b>CREG</b>)</td>
+            <td>$MODEMReg</td>
+          </tr>
+          <tr>
+            <td>GPRS Registration (<b>CGREG</b>)</td>
+            <td>$MODEMGPRS</td>
+          </tr>
+          <tr>
+            <td>EPS Registration (<b>CEREG</b>)</td>
+            <td>$MODEMESP</td>
+          </tr>
+          -->
+        </table>
+        <button class="ncd-text-button" style="width:250px" onclick="showModalWithOption('modalChangeModemProfile', 'modemProf', 'profiles')">&#9656; Change Modem Profile</button><br>
+        <!--
+        <button class="ncd-text-button" style="width:250px" onclick="showModalWithState('modalChangeModemState', 'factory')">&#9656; Back to Factory Profile</button><br>
+        -->
+        <button class="ncd-text-button" style="width:250px" onclick="showModalWithState('modalChangeModemState', 'up')">&#9656; Modem Power On</button><br>
+        <button class="ncd-text-button" style="width:250px" onclick="showModalWithState('modalChangeModemState', 'down')">&#9656; Modem Power Off</button><br>
+        <!--
+        <button class="ncd-text-button" style="width:250px" onclick="showModalWithState('modalChangeModemState', 'emgr')">&#9656; Modem Emergency Shutdown</button><br>
+        -->
+
+        <h5 class="ncd-section-heading">Network Operator</h5>
+        <table class="ncd-table">
+          <tr>
+            <td>Current Operator (<b>COPS</b>)</td>
+            <td onclick="showModalWithCmd('modalSendAtCommand', 'COPS')">$MODEMOpr</td>
+          </tr>
+        </table>
+
+        <button class="ncd-text-button" style="text-align:left; width:250px" onclick="scanOperators()">&#9656; Scan Operators</button>
+        <select id="operatorList" class="ncd-select" style="width:348px" name="operators">
+          <option id="operatorDefault" value="" disabled default></option>
+        </select> <br>
+
+      </div>
+      <!-- LTE MODEM -->
+
+    </div>
+    <!-- Container -->
+
+    <!-- Modal Send AT Command -->
+    <div id="modalSendAtCommand" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalSendAtCommand').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Send AT Command</b></label>
+          </div>
+          <div class="w3-section">
+            <!--
+            <input id="atCommand" class="w3-input w3-margin-bottom" placeholder="AT+..." required>
+            -->
+            <textarea id="atCommand" class="ncd-textarea" style="width:100%" name="atCommand" rows="7"></textarea>
+            <button class="ncd-modal-button" onclick="postAtCommand(document.getElementById('atCommand').value)">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Send AT Command -->
+
+    <!-- Modal Change Modem State -->
+    <div id="modalChangeModemState" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeModemState').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label id="stateMessage" class="ncd-modal-title"><b></b></label>
+          </div>
+          <div class="w3-section">
+            <button id="modemState" class="ncd-modal-button" onclick="postChangeModemState()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change Modem State -->
+
+    <!-- Modal Change Modem Profile -->
+    <div id="modalChangeModemProfile" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeModemProfile').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Modem Profile</b></label>
+          </div>
+          <div class="w3-section">
+            <label class="ncd-modal-label">Profile</label>
+            <select id="modemProf" class="w3-select" name="option">
+              <option value="" disabled selected></option>
+            </select>
+            <button class="ncd-modal-button" onclick="postModemProfile()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change Modem Profile -->
+
+
+    <script type="text/javascript">
+
+      pagelinks = document.getElementsByClassName("pagelink");
+
+      for(i = 0; i < pagelinks.length; i++) {
+        if(pagelinks[i].textContent == "Modem") {
+          pagelinks[i].className = pagelinks[i].className + " w3-red";
+        } else {
+          pagelinks[i].className = pagelinks[i].className.replace(" w3-red","");
+        }
+      }
+
+      function scanOperators() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            if(this.status == 200) {
+              console.log(this.responseText);
+
+              if(this.responseText.indexOf("(") == -1) {
+                document.getElementById("operatorDefault").text = this.responseText;
+              } else {
+                document.getElementById("operatorDefault").text = "";
+                var arr = this.responseText.split(")");
+
+                for(i=0; i < (arr.length - 3); i++) {
+                  var option = document.createElement("option");
+                  option.text = arr[i].slice(arr[i].indexOf("(") + 1);
+                  document.getElementById("operatorList").add(option);
+                }
+              }
+            }
+          }
+        };
+
+        xhttp.open("GET", "api/modem/cops", true);
+        xhttp.send();
+        document.body.style.cursor = "wait";
+        document.getElementById("operatorDefault").text = "Scanning...";
+      }
+
+      function postAtCommand(cmd) {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              location.reload();
+            }
+          }
+        };
+
+        if((cmd.indexOf('{') != -1) || (cmd.indexOf('}') != -1)) {
+          window.alert("ERROR: Replace {} with value(s)");
+          return;
+        }
+        if((cmd.indexOf('"') != -1) || (cmd.indexOf(',') != -1)) {
+          window.alert("ERROR: Invalid characters in the command");
+          return;
+        }
+
+
+        document.getElementById('modalSendAtCommand').style.display='none';
+
+        var query = "atcmd=" + cmd.toUpperCase()
+            .replace(/=/g,".eq.")
+            .replace(/ /g,"");
+
+        xhttp.open("POST", "modem", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+      function postChangeModemState() {
+        var xhttp = new XMLHttpRequest();
+
+        var state = document.getElementById("modemState").value;
+        console.log(state);
+
+        document.getElementById('modalChangeModemState').style.display='none';
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              location.reload();
+            }
+          }
+        };
+
+        var query = "state=" + state;
+
+        xhttp.open("POST", "modem", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+
+      }
+
+      function showModalWithCmd(modalWindow, cmd) {
+        var content = "";
+
+        switch(cmd) {
+          case "CFUN":
+            content = "AT+CFUN={}";
+            break;
+          case "UBANDMASK":
+            content = "AT+UBANDMASK={}\nAT+CFUN=15";
+            break;
+          case "URAT":
+            content = "AT+URAT={}\nAT+CFUN=2";
+            break;
+          case "CPSMS":
+            content = "AT+CFUN=0\nAT+CPSMS={}\nAT+CFUN=15";
+            break;
+          case "CEDRXS":
+            content = "AT+CFUN=0\nAT+CEDRXS={}\nAT+CFUN=15";
+            break;
+          case "CGDCONT":
+            content = "AT+CGDCONT={}";
+            break;
+          case "COPS":
+            content = "AT+COPS={}";
+            break;
+          case "UMNOPROF":
+            content = "AT+CFUN=0\nAT+UMNOPROF={}\nAT+CFUN=15\nAT+CFUN=15";
+            break;
+          case "USVCD":
+            content = "AT+USVCDOMAIN={}\nAT+CFUN=15";
+            break;
+          default: break;
+        }
+
+        document.getElementById('atCommand').value = content;
+        document.getElementById(modalWindow).style.display='block';
+      }
+
+
+      function showModalWithState(modalWindow, state) {
+        var content = "";
+
+        switch(state) {
+          case "up":
+            content = "Modem will be powered up.";
+            break;
+          case "down":
+            content = "Modem will be powered down.";
+            break;
+          case "emgr":
+            content = "Modem will be shutdown unconditionally.";
+            break;
+          case "factory":
+            content = "Modem profile will be set to factory default.";
+            break;
+          default: break;
+        }
+
+        document.getElementById('stateMessage').innerHTML = content;
+        document.getElementById('modemState').value = state;
+        document.getElementById(modalWindow).style.display='block';
+      }
+
+
+      function showModalWithOption(modalWindow, element, option) {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            if(this.status == 200) {
+
+              var obj = JSON.parse(this.responseText);
+              var x = document.getElementById(element);
+
+              for(var i = x.options.length; i >= 1; i--) {
+                x.options[i] = null;
+              }
+
+              for(var i = 0; i < obj[option].length; i++) {
+                var opt = document.createElement("option");
+                opt.text = obj[option][i];
+                x.add(opt);
+              }
+
+              console.log(obj[option]);
+            } else {
+              console.log(this.responseText);
+            }
+          }
+        };
+
+        xhttp.open("GET", "api/" + option, true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send();
+        document.getElementById(modalWindow).style.display='block';
+      }
+
+      function postModemProfile() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              location.reload();
+            }
+          }
+        };
+
+        var query = "profile=" + document.getElementById('modemProf').value;
+
+        document.getElementById('modalChangeModemProfile').style.display='none';
+
+        xhttp.open("POST", "modem", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+    </script>

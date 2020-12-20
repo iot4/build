@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NCD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/w3.css">
+    <!--
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    -->
+    <link rel="stylesheet" href="/css/ncd-light.css" id="theme">
+  </head>
+
+  <body class="ncd-body">
+    <div class="w3-bar w3-large w3-top ncd-header">
+      <a href="https://ncd.io" target="_blank">
+        <img src="/images/ncd_logo.png" class="w3-bar-item" alt="ncd_logo" style="max-height:48px">
+      </a>
+      <span class="w3-bar-item">ncd.io LTE Gateway</span>
+      <button class="w3-bar-item ncd-bar-button pagelink" onclick="openPage('system')">System</button>
+      <button class="w3-bar-item ncd-bar-button pagelink" onclick="openPage('network')">Network</button>
+      <button class="w3-bar-item ncd-bar-button pagelink" onclick="openPage('modem')">Modem</button>
+      <button class="w3-bar-item ncd-bar-button" onclick="openNewTab('NodeRed')">Node RED</button>
+      <button class="w3-bar-item ncd-bar-button" onclick="openNewTab('Terminal')">Terminal</button>
+    </div>
+
+    <script type="text/javascript">
+      var winNodeRed = null;
+      var winTerminal = null;
+
+      function openPage(path) {
+
+        if(path == "modem") {
+          var xhttp = new XMLHttpRequest();
+
+          xhttp.onreadystatechange = function() {
+            if(this.readyState == 4) {
+              if(this.status == 200) {
+                var state = JSON.parse(this.responseText);
+
+                if(state["lte state"] == "up") {
+                  window.alert('\nLTE network is up and running...\n\nDisable the LTE network to proceed.');
+                } else {
+                  window.open(location.protocol + '//' + location.host + '/modem', '_self');
+                }
+
+                document.body.style.cursor = "default";
+              }
+            }
+          };
+
+          xhttp.open("GET", "api/state/lte", true);
+          xhttp.send();
+        } else {
+          var url = location.protocol + '//' + location.host + '/'+ path;
+          window.open(url, '_self');
+        }
+        document.body.style.cursor = "wait";
+      }
+
+      function openNewTab(tabName) {
+        if(tabName=="NodeRed") {
+          if((winNodeRed == null) || (winNodeRed.closed)) {
+            winNodeRed = window.open("$NodeRedURL");
+          } else {
+            winNodeRed.focus();
+          }
+        } else if(tabName=="Terminal") {
+          if((winTerminal == null) || (winTerminal.closed)) {
+            winTerminal = window.open("$TerminalURL");
+          } else {
+            winTerminal.focus();
+          }
+        }
+      }
+
+      function showModal(modalWindow) {
+        document.getElementById(modalWindow).style.display='block';
+      }
+
+    </script>
+

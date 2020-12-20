@@ -1,0 +1,806 @@
+    <!-- Container -->
+    <div class="w3-container w3-content w3-margin-bottom">
+
+      <!-- NETWORK -->
+      <div id="Network" class="ncd-card subpage w3-padding-16">
+
+        <h5 class="ncd-section-heading">Network Control</h5>
+        <table id="networkTable" class="ncd-table">
+          <tr>
+            <td>Network Switching</td>
+            <td id="netCtrlMode" onclick="showModal('modalChangeNetControl')">$NetCtrlMode</td>
+          </tr>
+          <tr>
+            <td>Target Endpoint</td>
+            <td onclick="showModal('modalChangeNetControl')">$NetTargetEP</td>
+          </tr>
+          <tr>
+            <td>Ethernet</td>
+            <td id="btnEthState" onclick="showModal('modalSelectNetwork')"><b>$ETHState</b></td>
+          </tr>
+          <tr>
+            <td>Wi-Fi</td>
+            <td id="btnStaState" onclick="showModal('modalSelectNetwork')"><b>$STAState</b></td>
+          </tr>
+          <tr>
+            <td>LTE</td>
+            <td id="btnLteState" onclick="showModal('modalSelectNetwork')"><b>$LTEState</b></td>
+          </tr>
+        </table>
+
+        <h5 class="ncd-section-heading">Network Interfaces</h5>
+
+        <h6 id="ethTableTitle" class="ncd-subsection-heading ncd-text-button" onclick="showTable('ethTable')">Ethernet &#9662</h6>
+        <table id="ethTable" class="ncd-table">
+          <tr>
+            <td>Protocol</td>
+            <td onclick="showModal('modalChangeEthSettings')">$ETHProto</td>
+          </tr>
+          <tr>
+            <td>IP Address</td>
+            <td onclick="showModal('modalChangeEthSettings')">$ETHIPAddr</td>
+          </tr>
+          <tr>
+            <td>Subnet Mask</td>
+            <td onclick="showModal('modalChangeEthSettings')">$ETHNetMask</td>
+          </tr>
+          <tr>
+            <td>Gateway</td>
+            <td onclick="showModal('modalChangeEthSettings')">$ETHGateway</td>
+          </tr>
+          <tr>
+            <td>DNS</td>
+            <td onclick="showModal('modalChangeEthSettings')">$ETHDNS</td>
+          </tr>
+        </table>
+
+        <h6 id="wifiTableTitle" class="ncd-subsection-heading ncd-text-button" onclick="showTable('wifiTable')">Wi-Fi &#9657</h6>
+        <table id="wifiTable" class="ncd-table w3-hide">
+          <tr>
+            <td>SSID</td>
+            <td onclick="showModal('modalChangeStaSettings')">$STASSID</td>
+          </tr>
+          <tr>
+            <td>Passkey</td>
+            <td onclick="showModal('modalChangeStaSettings')">$STAKey</td>
+          </tr>
+          <tr>
+            <td>Protocol</td>
+            <td onclick="showModal('modalChangeStaSettings')">$STAProto</td>
+          </tr>
+          <tr>
+            <td>IP Address</td>
+            <td onclick="showModal('modalChangeStaSettings')">$STAIPAddr</td>
+          </tr>
+          <tr>
+            <td>Subnet Mask</td>
+            <td onclick="showModal('modalChangeStaSettings')">$STANetMask</td>
+          </tr>
+          <tr>
+            <td>Gateway</td>
+            <td onclick="showModal('modalChangeStaSettings')">$STAGateway</td>
+          </tr>
+          <tr>
+            <td>DNS</td>
+            <td onclick="showModal('modalChangeStaSettings')">$STADNS</td>
+          </tr>
+        </table>
+
+        <h6 id="lteTableTitle" class="ncd-subsection-heading ncd-text-button" onclick="showTable('lteTable')">LTE Network &#9657</h6>
+        <table id="lteTable" class="ncd-table w3-hide">
+          <tr>
+            <td>APN</td>
+            <td onclick="showModalWithOption('modalChangeLteSettings', 'lteChat', 'chatscripts')">$LTEAPN</td>
+          </tr>
+          <tr>
+            <td>Protocol</td>
+            <td onclick="showModalWithOption('modalChangeLteSettings', 'lteChat', 'chatscripts')">$LTEProto</td>
+          </tr>
+          <tr>
+            <td>IP Address</td>
+            <td onclick="showModalWithOption('modalChangeLteSettings', 'lteChat', 'chatscripts')">$LTEIPAddr</td>
+          </tr>
+          <tr>
+            <td>Subnet Mask</td>
+            <td onclick="showModalWithOption('modalChangeLteSettings', 'lteChat', 'chatscripts')">$LTENetMask</td>
+          </tr>
+          <tr>
+            <td>Gateway</td>
+            <td onclick="showModalWithOption('modalChangeLteSettings', 'lteChat', 'chatscripts')">$LTEGateway</td>
+          </tr>
+          <tr>
+            <td>DNS</td>
+            <td onclick="showModalWithOption('modalChangeLteSettings', 'lteChat', 'chatscripts')">$LTEDNS</td>
+          </tr>
+        </table>
+      </div>
+      <!-- NETWORK -->
+
+    </div>
+    <!-- Container -->
+
+    <!-- Modal Change Network Settings -->
+    <div id="modalChangeNetControl" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeNetControl').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Network Control Settings</b></label>
+          </div>
+          <div class="w3-section">
+            <label class="ncd-modal-label">Network Switching</label>
+            <select id="netControl" class="w3-select" name="option">
+              <option value="" disabled selected></option>
+              <option value="automatic">Automatic</option>
+              <option value="manual">Manual</option>
+            </select>
+            <label class="ncd-modal-label">Target EndPoint</label>
+            <input id="netTarget" class="w3-input w3-margin-bottom" type="text">
+            <input id="netSta" class="w3-check w3-margin-bottom" type="checkbox">&nbsp;<label>WiFi Interface</label><br>
+            <input id="netEth" class="w3-check w3-margin-bottom" type="checkbox">&nbsp;<label>Ethernet Interface</label><br>
+            <input id="netLte" class="w3-check w3-margin-bottom" type="checkbox">&nbsp;<label>LTE Interface</label><br>
+            <button class="ncd-modal-button" onclick="postNetControl()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change Network Settings -->
+
+    <!-- Modal Change STA Settings -->
+    <div id="modalChangeStaSettings" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeStaSettings').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Wi-Fi Settings</b></label>
+          </div>
+          <div class="w3-section">
+            <label class="ncd-modal-label">SSID</label>
+            <input id="staSsid" class="w3-input" type="text" name="password" required>
+            <label class="ncd-modal-label">Passkey</label>
+            <input id="staKey" class="w3-input" type="text" required>
+            <label class="ncd-modal-label">Protocol</label>
+            <select id="staProto" class="w3-select" name="option">
+              <option value="" disabled selected></option>
+              <option value="dhcp">DHCP</option>
+              <option value="static">Static</option>
+            </select>
+            <label class="ncd-modal-label">IP Address</label>
+            <input id="staIpAddr" class="w3-input" type="text" required>
+            <label class="ncd-modal-label">Subnet Mask</label>
+            <input id="staNetMask" class="w3-input" type="number" required>
+            <label class="ncd-modal-label">Gateway</label>
+            <input id="staGateway" class="w3-input" type="text" required>
+            <label class="ncd-modal-label">DNS</label>
+            <input id="staDns" class="w3-input" type="text" required>
+            <button class="ncd-modal-button" onclick="postStaSettings()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change STA Settings -->
+
+    <!-- Modal Change STA State -->
+    <div id="modalChangeStaState" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeStaState').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Wi-Fi Network State</b></label>
+          </div>
+          <div class="w3-section">
+            <input class="w3-radio w3-margin-bottom" type="radio" name="staState" value="up" checked>&nbsp;<label>Bring up Wi-Fi Network</label><br>
+            <input class="w3-radio" type="radio" name="staState" value="down">&nbsp;<label>Shutdown Wi-Fi Network</label>
+            <button class="ncd-modal-button" onclick="postNetworkState('sta')">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change STA State -->
+
+    <!-- Modal Change Ethernet Settings -->
+    <div id="modalChangeEthSettings" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeEthSettings').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Ethernet Settings</b></label>
+          </div>
+          <div class="w3-section">
+            <label class="ncd-modal-label">Protocol</label>
+            <select id="ethProto" class="w3-select" name="option">
+              <option value="" disabled selected></option>
+              <option value="dhcp">DHCP</option>
+              <option value="static">Static</option>
+            </select>
+            <label class="ncd-modal-label">IP Address</label>
+            <input id="ethIpAddr" class="w3-input" type="text" required>
+            <label class="ncd-modal-label">Subnet Mask</label>
+            <input id="ethNetMask" class="w3-input" type="number" required>
+            <label class="ncd-modal-label">Gateway</label>
+            <input id="ethGateway" class="w3-input" type="text" required>
+            <label class="ncd-modal-label">DNS</label>
+            <input id="ethDns" class="w3-input" type="text" required>
+            <button class="ncd-modal-button" onclick="postEthSettings()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change Ethernet Settings -->
+
+    <!-- Modal Change Ethernet State -->
+    <div id="modalChangeEthState" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeEthState').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Ethernet State</b></label>
+          </div>
+          <div class="w3-section">
+            <input class="w3-radio w3-margin-bottom" type="radio" name="ethState" value="up" checked>&nbsp;<label>Bring up Ethernet</label><br>
+            <input class="w3-radio" type="radio" name="ethState" value="down">&nbsp;<label>Shutdown Ethernet</label>
+            <button class="ncd-modal-button" onclick="postNetworkState('eth')">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change Ethernet State -->
+
+    <!-- Modal Change LTE Settings -->
+    <div id="modalChangeLteSettings" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeLteSettings').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Chatscript and APN</b></label>
+          </div>
+          <div class="w3-section">
+            <label class="ncd-modal-label">Chatscript</label>
+            <select id="lteChat" class="w3-select" name="option">
+              <option value="" disabled selected></option>
+            </select>
+            <button class="ncd-modal-button" onclick="postLteSettings()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change LTE Settings -->
+
+    <!-- Modal Change LTE State -->
+    <div id="modalChangeLteState" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeLteState').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change LTE Network State</b></label>
+          </div>
+          <div class="w3-section">
+            <input class="w3-radio w3-margin-bottom" type="radio" name="lteState" value="up" checked>&nbsp;<label>Bring up LTE Network</label><br>
+            <input class="w3-radio w3-margin-bottom" type="radio" name="lteState" value="down">&nbsp;<label>Shutdown LTE Network</label><br>
+            <button class="ncd-modal-button" onclick="postNetworkState('lte')">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change LTE State -->
+
+    <!-- Modal Select Network -->
+    <div id="modalSelectNetwork" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalSelectNetwork').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Select Network to Enable</b></label>
+          </div>
+          <div class="w3-section" id="selectNetwork">
+            <input class="w3-radio w3-margin-bottom" type="radio" name="selectNetwork" id="selectEth" value="eth" checked>&nbsp;<label>Ethernet</label><br>
+            <input class="w3-radio w3-margin-bottom" type="radio" name="selectNetwork" id="selectSta" value="sta">&nbsp;<label>Wi-Fi</label><br>
+            <input class="w3-radio w3-margin-bottom" type="radio" name="selectNetwork" id="selectLte" value="lte">&nbsp;<label>LTE</label><br>
+          </div>
+          <button class="ncd-modal-button" onclick="postEnableNetwork()">Submit</button>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change LTE State -->
+
+    <script type="text/javascript">
+
+      pagelinks = document.getElementsByClassName("pagelink");
+
+      for(i = 0; i < pagelinks.length; i++) {
+        if(pagelinks[i].textContent == "Network") {
+          pagelinks[i].className = pagelinks[i].className + " w3-red";
+        } else {
+          pagelinks[i].className = pagelinks[i].className.replace(" w3-red","");
+        }
+      }
+
+      document.getElementById('netControl').onchange = function () {
+        if(this.value == 'automatic') {
+          document.getElementById('netTarget').disabled = false;
+          document.getElementById('netSta').disabled = false;
+          document.getElementById('netEth').disabled = false;
+          document.getElementById('netLte').disabled = false;
+        } else {
+          document.getElementById('netTarget').disabled = true;
+          document.getElementById('netSta').disabled = true;
+          document.getElementById('netEth').disabled = true;
+          document.getElementById('netLte').disabled = true;
+        }
+      };
+
+      document.getElementById('staProto').onchange = function () {
+        if(this.value == 'dhcp') {
+          document.getElementById('staIpAddr').disabled = true;
+          document.getElementById('staNetMask').disabled = true;
+          document.getElementById('staGateway').disabled = true;
+          document.getElementById('staDns').disabled = true;
+        } else {
+          document.getElementById('staIpAddr').disabled = false;
+          document.getElementById('staNetMask').disabled = false;
+          document.getElementById('staGateway').disabled = false;
+          document.getElementById('staDns').disabled = false;
+        }
+      };
+
+      document.getElementById('ethProto').onchange = function () {
+        if(this.value == 'dhcp') {
+          document.getElementById('ethIpAddr').disabled = true;
+          document.getElementById('ethNetMask').disabled = true;
+          document.getElementById('ethGateway').disabled = true;
+          document.getElementById('ethDns').disabled = true;
+        } else {
+          document.getElementById('ethIpAddr').disabled = false;
+          document.getElementById('ethNetMask').disabled = false;
+          document.getElementById('ethGateway').disabled = false;
+          document.getElementById('ethDns').disabled = false;
+        }
+      };
+
+      if(document.getElementById('netCtrlMode').innerText == "automatic"){
+        document.getElementById('btnStaState').onclick=function(){};
+        document.getElementById('btnEthState').onclick=function(){};
+        document.getElementById('btnLteState').onclick=function(){};
+      }
+
+      function showModalWithOption(modalWindow, element, option) {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            if(this.status == 200) {
+
+              var obj = JSON.parse(this.responseText);
+              var x = document.getElementById(element);
+
+              for(var i = x.options.length; i >= 1; i--) {
+                x.options[i] = null;
+              }
+
+              for (var i = 0; i < obj[option].length; i++) {
+                var opt = document.createElement("option");
+                opt.text = obj["chatscripts"][i];
+                x.add(opt);
+              }
+            } else {
+              /* console.log(this.responseText); */
+            }
+          }
+        };
+
+        xhttp.open("GET", "api/" + option, true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send();
+        document.getElementById(modalWindow).style.display='block';
+      }
+
+      function showTable(tableId) {
+
+        ["wifiTable", "ethTable", "lteTable"].forEach( (table) => {
+            var x = document.getElementById(table);
+            if(x.className.indexOf("w3-hide") == -1) {
+              x.className += " w3-hide";
+            }
+            x = document.getElementById(table + "Title");
+            x.innerHTML = x.innerHTML.replace("\u25BE", "\u25B9");
+          }
+        );
+
+        var x = document.getElementById(tableId);
+        x.className = x.className.replace(" w3-hide", "");
+        x = document.getElementById(tableId + "Title");
+        x.innerHTML = x.innerHTML.replace("\u25B9", "\u25BE");
+      }
+
+      function validateIpAddr(ipaddr) {
+        var ipformat = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        if (ipaddr.match(ipformat)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      function validateNetMask(netmask) {
+        var maskInt = parseInt(netmask);
+        if((maskInt >= 8) && (maskInt <= 31)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      function validateDns(dns) {
+        return true;
+      }
+
+      function postNetControl() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            if(this.status == 200) {
+              window.alert(this.responseText);
+              location.reload();
+            } else {
+              window.alert(this.responseText);
+            }
+          }
+        };
+
+        var mode = document.getElementById('netControl').value;
+        var query = "mode=" + mode;
+
+
+        if(mode == "automatic") {
+
+          var target = document.getElementById('netTarget').value;
+
+          console.log(target);
+          if(target.length > 0) {
+            query = query + "&target=" + target;
+          } else {
+            window.alert("You need to enter target endpoint address.");
+            return;
+          }
+
+          var flag = false;
+
+          if(document.getElementById('netSta').checked) {
+            query = query + "&sta=selected";
+            flag = true;
+          } else {
+            query = query + "&sta=unselected";
+          }
+
+          if(document.getElementById('netEth').checked) {
+            query = query + "&eth=selected";
+            flag = true;
+          } else {
+            query = query + "&eth=unselected";
+          }
+
+          if(document.getElementById('netLte').checked) {
+            query = query + "&lte=selected";
+            flag = true;
+          } else {
+            query = query + "&lte=unselected";
+          }
+
+          if(flag == false) {
+            window.alert("You need to choose at least one interface.");
+            return;
+          }
+        }
+
+        document.getElementById('modalChangeNetControl').style.display='none';
+
+        xhttp.open("POST", "control", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+
+      function postStaSettings() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            if(this.status == 200) {
+              window.alert(this.responseText);
+              location.reload();
+            } else {
+              window.alert(this.responseText);
+            }
+          }
+        };
+
+        var ssid = document.getElementById('staSsid').value;
+        var key = document.getElementById('staKey').value;
+        var proto = document.getElementById('staProto').value;
+        var ipaddr = document.getElementById('staIpAddr').value;
+        var netmask = document.getElementById('staNetMask').value;
+        var gateway = document.getElementById('staGateway').value;
+        var dns = document.getElementById('staDns').value;
+        var query = "";
+
+        if((ipaddr != "") && (validateIpAddr(ipaddr) == false)) {
+          window.alert("Invalid IP Address entered.");
+          return;
+        }
+        if((netmask != "") && (validateNetMask(netmask) == false)) {
+          window.alert("Invalid Subnet Mask entered.\n Use Network bit expression.");
+          return;
+        }
+        if((gateway != "") && (validateIpAddr(gateway) == false)) {
+          window.alert("Invalid Gateway Address entered.");
+          return;
+        }
+        if((dns != "") && (validateDns(dns) == false)) {
+          window.alert("Invalid DNS entered.");
+          return;
+        }
+
+        if(ssid != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "ssid=" + ssid;
+        }
+        if(key != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "key=" + key;
+        }
+        if(proto != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "proto=" + proto;
+
+          if(proto == "dhcp") {
+            ipaddr = "";
+            netmask = "";
+            gateway = "";
+            dns = "";
+          }
+        }
+        if(ipaddr != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "ipaddr=" + ipaddr;
+        }
+        if(netmask != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "netmask=" + netmask;
+        }
+        if(gateway != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "gateway=" + gateway;
+        }
+        if(dns != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "dns=" + dns;
+        }
+
+        document.getElementById('modalChangeStaSettings').style.display='none';
+
+        xhttp.open("POST", "sta", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+
+      function postEthSettings() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            if(this.status == 200) {
+              window.alert(this.responseText);
+              location.reload();
+            } else {
+              window.alert(this.responseText);
+            }
+          }
+        };
+
+        var proto = document.getElementById('ethProto').value;
+        var ipaddr = document.getElementById('ethIpAddr').value;
+        var netmask = document.getElementById('ethNetMask').value;
+        var gateway = document.getElementById('ethGateway').value;
+        var dns = document.getElementById('ethDns').value;
+        var query = "";
+
+        if((ipaddr != "") && (validateIpAddr(ipaddr) == false)) {
+          window.alert("Invalid IP Address entered.");
+          return;
+        }
+        if((netmask != "") && (validateNetMask(netmask) == false)) {
+          window.alert("Invalid Subnet Mask entered.\n Use Network bit expression.");
+          return;
+        }
+        if((gateway != "") && (validateIpAddr(gateway) == false)) {
+          window.alert("Invalid Gateway Address entered.");
+          return;
+        }
+        if((dns != "") && (validateDns(dns) == false)) {
+          window.alert("Invalid DNS entered.");
+          return;
+        }
+
+        if(proto != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "proto=" + proto;
+
+          if(proto == "dhcp") {
+            ipaddr = "";
+            netmask = "";
+            gateway = "";
+            dns = "";
+          }
+        }
+        if(ipaddr != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "ipaddr=" + ipaddr;
+        }
+        if(netmask != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "netmask=" + netmask;
+        }
+        if(gateway != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "gateway=" + gateway;
+        }
+        if(dns != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "dns=" + dns;
+        }
+
+        document.getElementById('modalChangeEthSettings').style.display='none';
+
+        xhttp.open("POST", "eth", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+
+      function postLteSettings() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            if(this.status == 200) {
+              window.alert(this.responseText);
+              location.reload();
+            } else {
+              window.alert(this.responseText);
+            }
+          }
+        };
+
+        var query = "chatscript=" + document.getElementById('lteChat').value;
+
+        document.getElementById('modalChangeLteSettings').style.display='none';
+
+        xhttp.open("POST", "lte", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+
+      function postNetworkState(interface) {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            if(this.status == 200) {
+              window.alert(this.responseText);
+              location.reload();
+            } else {
+              window.alert(this.responseText);
+              location.reload();
+            }
+          }
+        };
+
+        var state = "up";
+
+        if(interface == "ap") {
+          state = document.querySelector('input[name="apState"]:checked').value;
+          document.getElementById('modalChangeApState').style.display='none';
+        }
+        else if(interface == "sta") {
+          state = document.querySelector('input[name="staState"]:checked').value;
+          document.getElementById('modalChangeStaState').style.display='none';
+        }
+        else if(interface == "eth") {
+          state = document.querySelector('input[name="ethState"]:checked').value;
+          document.getElementById('modalChangeEthState').style.display='none';
+        }
+        else if(interface == "lte") {
+          state = document.querySelector('input[name="lteState"]:checked').value;
+          document.getElementById('modalChangeLteState').style.display='none';
+        }
+
+        var query = interface + "=" + state;
+
+        xhttp.open("POST", "network", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+      function postEnableNetwork() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            if(this.status == 200) {
+              /* window.alert(this.responseText); */
+              location.reload();
+            } else {
+              /* window.alert(this.responseText); */
+              location.reload();
+            }
+          }
+        };
+
+        document.getElementById('modalSelectNetwork').style.display='none';
+
+        var interface = document.querySelector('input[name="selectNetwork"]:checked').value;
+        var query = "select=" + interface;
+
+        xhttp.open("POST", "network", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+
+        window.alert("Network connection is going to be distupted!")
+
+      }
+    </script>
+

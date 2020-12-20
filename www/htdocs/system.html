@@ -1,0 +1,572 @@
+    <!-- Container -->
+    <div class="w3-container w3-content w3-margin-bottom">
+
+      <!-- SYSTEM -->
+      <div id="System" class="ncd-card subpage w3-padding-16">
+        <h5 class="ncd-section-heading">Settings</h5>
+
+        <button class="ncd-text-button" onclick="showModal('modalSetRootPasswd')">&#9656; Set Root Password</button> <br>
+        <button class="ncd-text-button" onclick="showModal('modalRemoveRootPasswd')">&#9656; Clear Root Password</button> <br>
+        <button class="ncd-text-button" onclick="showModal('modalResetParameters')">&#9656; Reset Network Parameters</button> <br>
+        <button class="ncd-text-button" onclick="showModal('modalOledDisplay')">&#9656; Set OLED Display Content</button> <br>
+        <button class="ncd-text-button" onclick="showModal('modalColorLed')">&#9656; Set Color LED</button> <br>
+        <button class="ncd-text-button" onclick="getSystemLog()">&#9656; Download System Log</button> <br>
+        <button class="ncd-text-button" onclick="showModal('modalRestartService')">&#9656; Restart System Monitor Service</button> <br>
+        <button class="ncd-text-button" onclick="showModal('modalRebootDevice')">&#9656; Reboot Device</button> <br>
+        <button class="ncd-text-button" onclick="showModal('modalShutdownDevice')">&#9656; Shutdown Device</button>
+
+        <h5 class="ncd-section-heading">Device AP</h5>
+        <table class="ncd-table">
+          <tr>
+            <td>SSID</td>
+            <td onclick="showModal('modalChangeApSettings')">$APSSID</td>
+          </tr>
+          <tr>
+            <td>Passkey</td>
+            <td onclick="showModal('modalChangeApSettings')">$APKey</td>
+          </tr>
+          <tr>
+            <td>IP Address</td>
+            <td onclick="showModal('modalChangeApSettings')">$APIPAddr</td>
+          </tr>
+          <tr>
+            <td>State</td>
+            <td onclick="showModal('modalChangeApState')"><b>$APState</b></td>
+          </tr>
+        </table>
+
+        <h5 class="ncd-section-heading">Versions</h5>
+        <table class="ncd-table">
+          <tr>
+            <td>Web Console</td>
+            <td>$CONSOLEVER</td>
+          </tr>
+          <tr>
+            <td>System Monitor Daemon</td>
+            <td>$SYSMONVER</td>
+          </tr>
+        </table>
+
+      </div>
+      <!-- SYSTEM -->
+
+    </div>
+    <!-- Container -->
+
+    <!-- Modal Set Root Password -->
+    <div id="modalSetRootPasswd" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalSetRootPasswd').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Set Root Password</b></label>
+          </div>
+          <div class="w3-section">
+            <input id="rootPsw1" class="w3-input w3-margin-bottom" type="password" placeholder="Enter new password" name="password" required>
+            <input id="rootPsw2" class="w3-input w3-margin-bottom" type="password" placeholder="Retype password" required>
+            <button class="ncd-modal-button" onclick="postRootPasswd(document.getElementById('rootPsw1').value,document.getElementById('rootPsw2').value)">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Set Root Password -->
+
+    <!-- Modal Clear Root Password -->
+    <div id="modalRemoveRootPasswd" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalRemoveRootPasswd').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Clear Root Password</b></label>
+          </div>
+          <div class="w3-section">
+            <button class="ncd-modal-button" onclick="postRootPasswd('NULL','NULL')">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Clear Root Password -->
+
+    <!-- Modal Reset Paramters -->
+    <div id="modalResetParameters" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalResetParameters').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Reset System Paramters</b></label>
+          </div>
+          <div class="w3-section">
+            <button class="ncd-modal-button" onclick="postResetParameters()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Reset Paramters -->
+
+    <!-- Modal OLED Display -->
+    <div id="modalOledDisplay" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalOledDisplay').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>OLED Display Content</b></label>
+          </div>
+          <div class="w3-section">
+            <input id="oledSystem" class="w3-radio w3-margin-bottom" type="radio" name="oledState" value="system" checked>&nbsp;<label>Controlled By System</label><br>
+            <input id="oledUser" class="w3-radio w3-margin-bottom" type="radio" name="oledState" value="user">&nbsp;<label>Display User Content</label> <br>
+            <textarea id="oledContent" class="ncd-textarea" style="margin-left:1.5em" name="oledContent" rows="8" cols="21" disabled=true></textarea>
+            <button class="ncd-modal-button" onclick="postOledDisplay()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal OLED Display -->
+
+    <!-- Modal Color LED -->
+    <div id="modalColorLed" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalColorLed').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Color LED Control</b></label>
+          </div>
+          <div class="w3-section">
+            <input id="cledRed" class="w3-check w3-margin-bottom" type="checkbox">&nbsp;<label>RED</label><br>
+            <input id="cledGreen" class="w3-check w3-margin-bottom" type="checkbox">&nbsp;<label>GREEN</label><br>
+            <input id="cledBlue" class="w3-check w3-margin-bottom" type="checkbox">&nbsp;<label>BLUE</label><br>
+            <button class="ncd-modal-button" onclick="postColorLed()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Color LED -->
+
+    <!-- Modal Restart System Service -->
+    <div id="modalRestartService" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalRestartService').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Restart System Monitor Service</b></label>
+          </div>
+          <div class="w3-section">
+            <button class="ncd-modal-button" onclick="postRestartService()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Restart System Service -->
+
+    <!-- Modal Reboot Device -->
+    <div id="modalRebootDevice" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalRebootDevice').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Reboot Device</b></label>
+          </div>
+          <div class="w3-section">
+            <button class="ncd-modal-button" onclick="postRebootDevice()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Reboot Device -->
+
+    <!-- Modal Shutdown Device -->
+    <div id="modalShutdownDevice" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalShutdownDevice').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Shutdown Device</b></label>
+          </div>
+          <div class="w3-section">
+            <button class="ncd-modal-button" onclick="postShutdownDevice()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Shutdown Device -->
+
+
+    <!-- Modal Change AP Settings -->
+    <div id="modalChangeApSettings" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeApSettings').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Device AP Settings</b></label>
+          </div>
+          <div class="w3-section">
+            <label class="ncd-modal-label">SSID</label>
+            <input id="apSsid" class="w3-input" type="text" name="password" required>
+            <label class="ncd-modal-label">Passkey</label>
+            <input id="apKey" class="w3-input" type="text" required>
+            <label class="ncd-modal-label">IP Address</label>
+            <input id="apIpAddr" class="w3-input w3-margin-bottom" type="text" required>
+            <button class="ncd-modal-button" onclick="postApSettings()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change AP Settings -->
+
+    <!-- Modal Change AP State -->
+    <div id="modalChangeApState" class="w3-modal">
+      <div class="w3-modal-content w3-card-3 w3-animate-zoom" style="max-width:450px">
+        <div class="w3-center">
+          <span onclick="document.getElementById('modalChangeApState').style.display='none'" class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        </div>
+        <div class="w3-container" method="post">
+          <div class="w3-section w3-center">
+            <label class="ncd-modal-title"><b>Change Device AP Settings</b></label>
+          </div>
+          <div class="w3-section">
+            <input class="w3-radio w3-margin-bottom" type="radio" name="apState" value="up" checked>&nbsp;<label>Bring up Device AP</label><br>
+            <input class="w3-radio" type="radio" name="apState" value="down">&nbsp;<label>Shutdown Device AP</label>
+            <button class="ncd-modal-button" onclick="postApState()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Change AP State -->
+
+    <script type="text/javascript">
+
+      pagelinks = document.getElementsByClassName("pagelink");
+
+      for(i = 0; i < pagelinks.length; i++) {
+        if(pagelinks[i].textContent == "System") {
+          pagelinks[i].className = pagelinks[i].className + " w3-red";
+        } else {
+          pagelinks[i].className = pagelinks[i].className.replace(" w3-red","");
+        }
+      }
+
+      document.getElementById('oledSystem').onchange = function () {
+        if(this.checked) {
+          document.getElementById('oledContent').disabled = true;
+        }
+      };
+      document.getElementById('oledUser').onchange = function () {
+        if(this.checked) {
+          document.getElementById('oledContent').disabled = false;
+        }
+      };
+
+      function validateIpAddr(ipaddr) {
+        var ipformat = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        if (ipaddr.match(ipformat)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      function postRootPasswd(psw1,psw2) {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              /* location.reload(); */
+            }
+          }
+        };
+
+        if(psw1 != psw2) {
+          window.alert("Password does not match.");
+          return;
+        }
+
+        var query = "password=" + psw1;
+
+        document.getElementById('modalSetRootPasswd').style.display='none';
+        document.getElementById('modalRemoveRootPasswd').style.display='none';
+
+        xhttp.open("POST", "system", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+      }
+
+      function postResetParameters() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              /* location.reload(); */
+            }
+          }
+        };
+
+        var query = "reset=yes";
+
+        document.getElementById('modalResetParameters').style.display='none';
+
+        xhttp.open("POST", "system", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+      function getSystemLog() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            if(this.status == 200) {
+              /* window.alert(this.responseText); */
+
+              var a = document.createElement("a");
+              document.body.appendChild(a);
+              a.sty;e = "display: none";
+
+              var blob = new Blob([this.responseText],
+                {type:'text/plain;charset=utf-8'});
+              var d = new Date();
+
+              a.href = window.URL.createObjectURL(blob);
+              a.download = "syslog " + d.toISOString() + ".txt";
+              a.click();
+              window.URL.revokeObjectURL(a.href);
+
+            } else {
+              window.alert("Failed to download system log.");
+            }
+          }
+        };
+
+        xhttp.open("GET", "api/syslog", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send();
+        document.body.style.cursor = "wait";
+      }
+
+      function postOledDisplay() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              /* location.reload(); */
+            }
+          }
+        };
+
+        var query = "oled=";
+        if(document.getElementById('oledSystem').checked) {
+          query = query + "system";
+        } else {
+          var content = document.querySelector('textarea[name="oledContent"]').value;
+          query = query + "user&content=" + content;
+        }
+
+        document.getElementById('modalOledDisplay').style.display='none';
+
+        xhttp.open("POST", "system", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+      }
+
+      function postColorLed() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              /* location.reload(); */
+            }
+          }
+        };
+
+        var query = "";
+
+        if(document.getElementById('cledRed').checked) {
+          query = query + "red=on&";
+        } else {
+          query = query + "red=off&";
+        }
+        if(document.getElementById('cledGreen').checked) {
+          query = query + "green=on&";
+        } else {
+          query = query + "green=off&";
+        }
+        if(document.getElementById('cledBlue').checked) {
+          query = query + "blue=on";
+        } else {
+          query = query + "blue=off";
+        }
+
+        document.getElementById('modalColorLed').style.display='none';
+
+        xhttp.open("POST", "system", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+      }
+
+      function postRestartService() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              location.reload();
+            }
+          }
+        };
+
+        var query = "restart=system-monitor";
+
+        document.getElementById('modalRestartService').style.display='none';
+
+        xhttp.open("POST", "system", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+      }
+
+
+      function postRebootDevice() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              location.reload();
+            }
+          }
+        };
+
+        var query = "reboot=yes";
+
+        document.getElementById('modalRebootDevice').style.display='none';
+
+        xhttp.open("POST", "system", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+      }
+
+      function postShutdownDevice() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              location.reload();
+            }
+          }
+        };
+
+        var query = "shutdown=yes";
+
+        document.getElementById('modalShutdownDevice').style.display='none';
+
+        xhttp.open("POST", "system", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+      }
+
+
+      function postApSettings() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              location.reload();
+            }
+          }
+        };
+
+        var ssid = document.getElementById('apSsid').value;
+        var key = document.getElementById('apKey').value;
+        var ipaddr = document.getElementById('apIpAddr').value;
+        var query = "";
+
+        if((ipaddr != "") && (validateIpAddr(ipaddr) == false)) {
+          window.alert("Invalid IP Address entered.");
+          return;
+        }
+
+        if(ssid != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "ssid=" + ssid;
+        }
+        if(key != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "key=" + key;
+        }
+        if(ipaddr != "") {
+          if(query != "") {
+            query = query + "&";
+          }
+          query = query + "ipaddr=" + ipaddr;
+        }
+
+        document.getElementById('modalChangeApSettings').style.display='none';
+
+        xhttp.open("POST", "ap", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+      function postApState() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            document.body.style.cursor = "default";
+            window.alert(this.responseText);
+            if(this.status == 200) {
+              location.reload();
+            }
+          }
+        };
+
+        var state = document.querySelector('input[name="apState"]:checked').value;
+        var query = "ap=" + state;
+
+        document.getElementById('modalChangeApState').style.display='none';
+
+        xhttp.open("POST", "network", true);
+        xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhttp.send(query);
+        document.body.style.cursor = "wait";
+      }
+
+    </script>

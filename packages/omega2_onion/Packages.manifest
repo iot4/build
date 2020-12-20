@@ -1,0 +1,875 @@
+Package: adc-exp
+Version: 0.3-3
+Depends: libc, bc, coreutils-sleep
+Source: feeds/onion/adc-exp
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1850
+Filename: adc-exp_0.3-3_mipsel_24kc.ipk
+Size: 2551
+SHA256sum: a7b6b5c7f39ba2177d57892643010a6ab4d0d1ce95821b91473bc3cb516197fa
+Description:  Command line utility for ADC Expansion
+
+Package: ads1x15-chip
+Version: 0.2-1
+Depends: libc, liboniondebug, libonioni2c, uclibcxx
+Source: feeds/onion/onion-ads1x15-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 4522
+Filename: ads1x15-chip_0.2-1_mipsel_24kc.ipk
+Size: 5223
+SHA256sum: b9f25ba6a0e987bc2e87e6c4b14ef3f8defb03344d65c468ed5e312e0622b2d7
+Description:  Tool to enable use of ADS1X15 ADC+PGA chip via I2C
+
+Package: arduino-dock-2
+Version: 0.1-1
+Depends: libc, avrdude
+Source: feeds/onion/arduino-dock
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 7308
+Filename: arduino-dock-2_0.1-1_mipsel_24kc.ipk
+Size: 8004
+SHA256sum: d8a4b820ea071280a6ea1f9a2f16179bb38e75a7921e07c0d3bb27c03035acf5
+Description:  Tools for using Onion Arduino Dock 2
+
+Package: avrdude
+Version: 6.1-1
+Depends: libc, libncurses, libreadline, libusb-compat, libftdi1, libelf1
+Source: feeds/onion/avrdude
+License: GPL-2.0
+LicenseFiles: COPYING
+Section: utils
+Maintainer: Ted Hess <thess@kitschensync.net>
+Architecture: mipsel_24kc
+Installed-Size: 169795
+Filename: avrdude_6.1-1_mipsel_24kc.ipk
+Size: 170367
+SHA256sum: 411092924a07e2ea18cfce90eb0563c73784c40f3c120db168f9f2c87ccdf955
+Description:  AVRDUDE is a full featured program for programming Atmel's AVR CPU's.
+
+Package: dht-sensor
+Version: 0.1-1
+Depends: libc, uclibcxx
+Source: feeds/onion/dht-sensor
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3997
+Filename: dht-sensor_0.1-1_mipsel_24kc.ipk
+Size: 4713
+SHA256sum: 014d493cc042a3b5e509597cb0fec60c29973dbfcf5640afaae035034100dee4
+Description:  Tool to read from the DHT11/22 Temperature and Humidity Sensor
+
+Package: ethernet-mode
+Version: 0.3-8
+Depends: libc, onion-script
+Source: feeds/onion/onion-script
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 547
+Filename: ethernet-mode_0.3-8_mipsel_24kc.ipk
+Size: 1249
+SHA256sum: 909c84a3af931e8dfbb8dd4d615a49b7bae3a7850233b1210f730265e4547585
+Description:  Program to help automate production-time ethernet configuration
+
+Package: fast-gpio
+Version: 0.2-1
+Depends: libc, onion-sh-lib, uclibcxx
+Source: feeds/onion/fast-gpio
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 6760
+Filename: fast-gpio_0.2-1_mipsel_24kc.ipk
+Size: 7495
+SHA256sum: edd2f3d99c3764b3c3b4cd0962e93dd3e6bcdc78e7be08e999880a9603257369
+Description:  Tool to enable GPIO access and PWM support
+
+Package: fbi
+Version: 2.09
+Depends: libc, libpng, libtiff, libexif, dejavu-fonts-ttf-DejaVuSans, libcurl, libfreetype, fontconfig
+Source: feeds/onion/fbida
+Section: utils
+Architecture: mipsel_24kc
+Installed-Size: 55220
+Filename: fbi_2.09_mipsel_24kc.ipk
+Size: 55130
+SHA256sum: 7c5a07ea0ee9e2acb49b04c403166c6a185bbf83499aa486ca9df5d5afa8426e
+Description:  This is a image viewer for the linux framebuffer console.
+
+Package: hostname-tool
+Version: 0.7-1
+Depends: libc
+Source: feeds/onion/hostname-tool
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 863
+Filename: hostname-tool_0.7-1_mipsel_24kc.ipk
+Size: 1576
+SHA256sum: a925f87c40e675acd3bfe7b8fe7be33ee6e82bdf332875ffc983ee2707683f24
+Description:  Tool to properly set the Omega2's Hostname to the last 4 digits of its MAC address
+
+Package: i2c-exp-ubus
+Version: 0.9-1
+Depends: libc, rpcd, onion-sh-lib, pwm-exp, relay-exp
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1731
+Filename: i2c-exp-ubus_0.9-1_mipsel_24kc.ipk
+Size: 2464
+SHA256sum: 05612098ac15db5439aaa7ffb76d7955db11e7a46c83050da5cc87949c084233
+Description:  I2C-based Expansion ubus integration
+
+Package: libfreefare-examples
+Version: 0.4.0-2
+Depends: libc, libfreefare
+Source: feeds/onion/libfreefare
+Section: utils
+Architecture: mipsel_24kc
+Installed-Size: 33010
+Filename: libfreefare-examples_0.4.0-2_mipsel_24kc.ipk
+Size: 33730
+SHA256sum: f57e9ccc020b4b96c87ad52a382e0d1d31ae2a2bef687468cbb17375e17a1031
+Description:  libfreefare is provided with some examples:
+ * mifare-classic-format, mifare-desfire-format: attempt to format Mifare
+ cards;
+ * mifare-classic-write-ndef, mifare-desfire-write-ndef: write NDEF file to
+ Mifare cards;
+ * some mifare-desfire-* examples to made various access to Mifare DESFire.
+
+Package: libfreefare
+Version: 0.4.0-2
+Depends: libc, libnfc, libopenssl
+Source: feeds/onion/libfreefare
+Section: libs
+Architecture: mipsel_24kc
+Installed-Size: 32331
+Filename: libfreefare_0.4.0-2_mipsel_24kc.ipk
+Size: 33127
+SHA256sum: 8346d975d9516e8e395427ba36298d367999e577253c4dd5024b678113c4e841
+Description:  The libfreefare project aims to provide a convenient API for MIFARE card
+ manipulations.
+
+Package: libnfc
+Version: 1.7.1-3
+Depends: libc, libusb-compat, pcscd, ccid
+Source: feeds/onion/libnfc
+License: LGPL-2.1
+Section: libs
+Maintainer: Sebastian Wendel <packages@sourceindex.de>
+Architecture: mipsel_24kc
+Installed-Size: 50224
+Filename: libnfc_1.7.1-3_mipsel_24kc.ipk
+Size: 51137
+SHA256sum: 23e6ca43aedf36be1af2f088e652ab027cbafa1ba7952175b0da3c1930711468
+Description:  libnfc is the first libre, platform-independent, low level NFC SDK and Programmers API
+ 
+ * manipulate Jewel Topaz tags using libnfc
+ * manipulate MIFARE Classic and Ultralight tags using libnfc
+ 
+
+Package: liboniondebug
+Version: 0.9-1
+Depends: libc
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1217
+Filename: liboniondebug_0.9-1_mipsel_24kc.ipk
+Size: 1900
+SHA256sum: f2c30c3d5284e7a45946167b71b8dd9ae2e33e46bd1c8bad4f10cfce9bf14214
+Description:  Library used to ease debug
+
+Package: libonioni2c
+Version: 0.9-1
+Depends: libc, liboniondebug
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3225
+Filename: libonioni2c_0.9-1_mipsel_24kc.ipk
+Size: 3931
+SHA256sum: 3b8c15324d4c4e0d3c2c42c25914e0821c127006df351afaf3b93cc17928feb0
+Description:  Library of I2C communication functions
+
+Package: libonionmcp23008
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1971
+Filename: libonionmcp23008_0.9-1_mipsel_24kc.ipk
+Size: 2675
+SHA256sum: 5ffa7867ab89b005d945cc88a637e24ab00b587d2b88165272bee0b52ee91795
+Description:  Library of functions for MCP23008 chips
+
+Package: libonionoledexp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 4719
+Filename: libonionoledexp_0.9-1_mipsel_24kc.ipk
+Size: 5410
+SHA256sum: ac15283b46ba9274daa30af289384833c0e006a11b96f34f9ecb56aa58d2b8d1
+Description:  Library of functions to control the Onion OLED Expansion
+
+Package: libonionpwmexp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3108
+Filename: libonionpwmexp_0.9-1_mipsel_24kc.ipk
+Size: 3833
+SHA256sum: 29709df591d99fab5aa9dd38c2f2d45d0b2818517a9c85224e28d406879dbb20
+Description:  Library of functions to control the PWM Expansion
+
+Package: libonionrelayexp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionmcp23008
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1907
+Filename: libonionrelayexp_0.9-1_mipsel_24kc.ipk
+Size: 2630
+SHA256sum: 6d0082f3ace08a45e762939c93fecdb45c17cffd1205b8dfceaa9161f4980b78
+Description:  Library of functions to control the Onion Relay Expansion
+
+Package: lv_micropython
+Version: 1.9.2-2
+Depends: libc, libffi
+Source: feeds/onion/lv_micropython
+Section: lang
+Architecture: mipsel_24kc
+Installed-Size: 398354
+Filename: lv_micropython_1.9.2-2_mipsel_24kc.ipk
+Size: 397894
+SHA256sum: a7d5d528ed78f0dcc28ce6d361188d6e71cdc02162e63666253790e81d6484ef
+Description:  This package contains Micro Python, a lean and fast implementation of the Python 3.4 programming language
+ that is optimised to run on a microcontroller (and low power computers). This version of Micro Python includes
+ the LittleV Graphics Library.
+
+Package: nfc-exp
+Version: 1.7.1-3
+Depends: libc, nfc-utils
+Source: feeds/onion/libnfc
+License: LGPL-2.1
+Section: onion
+Maintainer: Sebastian Wendel <packages@sourceindex.de>
+Architecture: mipsel_24kc
+Installed-Size: 294
+Filename: nfc-exp_1.7.1-3_mipsel_24kc.ipk
+Size: 1020
+SHA256sum: 95c5247b318bb1d84a73ee422e62e85793a52c732382e2e091dfb54baffa5726
+Description:  Onion NFC/RFID Expansion Applications
+
+Package: nfc-utils
+Version: 1.7.1-3
+Depends: libc, libnfc, xxd
+Source: feeds/onion/libnfc
+License: LGPL-2.1
+Section: utils
+Maintainer: Sebastian Wendel <packages@sourceindex.de>
+Architecture: mipsel_24kc
+Installed-Size: 28313
+Filename: nfc-utils_1.7.1-3_mipsel_24kc.ipk
+Size: 29277
+SHA256sum: f2fe989e382088a2811b6f56a96155c956bfebf7980b446cc7f7bb29c54a6485
+Description:  Provide some examples shared functions like print, parity calculation, options parsing
+ 
+ * Emulates a NFC Forum Tag Type 4 v2.0 (or v1.0)
+ * Jewel dump/restore tool
+ * Lists the first target present of each founded device
+ * MIFARE Classic manipulation example
+ * MIFARE Ultralight dump/restore tool
+ * Extract NDEF Message from a NFC Forum Tag Type 3
+ * Relay example using two PN532 devices
+ * Lists each available NFC device
+ 
+
+Package: ogps
+Version: 2017-04-20-1
+Depends: libc, libubox, libubus
+Source: feeds/onion/ogps
+License: GPL-2.0+
+Section: onion
+Maintainer: Lazar Demin <lazar@onion.io>
+Architecture: mipsel_24kc
+Installed-Size: 5096
+Filename: ogps_2017-04-20-1_mipsel_24kc.ipk
+Size: 5855
+SHA256sum: 6088bb3b3aabd9901172687a25b0048c3795a28b26327f532c61d093e6bd2884
+Description:  OpenWrt GPS Daemon
+
+Package: oled-exp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionoledexp
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 6998
+Filename: oled-exp_0.9-1_mipsel_24kc.ipk
+Size: 7740
+SHA256sum: ffe373249f367ed31094b694b84bb7a6a8826802efaad0d9b3973d40355dfab6
+Description:  Driver for OLED Expansion
+
+Package: omega2-base
+Version: 1.0.0-2
+Depends: libc
+Source: feeds/onion/omega2-base
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1262
+Filename: omega2-base_1.0.0-2_mipsel_24kc.ipk
+Size: 1961
+SHA256sum: a390616b22eef17d5efbf8f9d312a6c407bebe054b80f915906980cedac2935f
+Description:  Omega2 family base packages and configuration
+
+Package: omega2-ctrl
+Version: 0.3-1
+Depends: libc
+Source: feeds/onion/omega2-ctrl
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3415
+Filename: omega2-ctrl_0.3-1_mipsel_24kc.ipk
+Size: 4094
+SHA256sum: c30628ad84b76ccd92b84bb72c70e6a72e85c0e99ffec97492da466cdb40eb3d
+Description:  Utility to control the Omega2's low-level hardware
+
+Package: omega2-dash-base
+Version: 1.0.0-2
+Depends: libc, kmod-fb, kmod-fbtft-support, kmod-fbtft-ili9341
+Source: feeds/onion/omega2-dash
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 871
+Filename: omega2-dash-base_1.0.0-2_mipsel_24kc.ipk
+Size: 1590
+SHA256sum: aba0c534cb973da88f7f889c36b9dc7feb12bf023bb1dab1c3dd4fdf560834cd
+Description:  Omega2 Dash base packages and configuration
+
+Package: omega2-lte-base
+Version: 1.0.2-1
+Depends: libc, usb-modeswitch, kmod-mii, kmod-usb-net, kmod-usb-wdm, kmod-usb-net-qmi-wwan, ogps
+Source: feeds/onion/omega2-lte
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 24388
+Filename: omega2-lte-base_1.0.2-1_mipsel_24kc.ipk
+Size: 25081
+SHA256sum: 2b2065412d28f50025a61c1b5f0510b8b75f7143ccd6b32de5db605395a59776
+Description:  Omega2 LTE base packages and configuration
+
+Package: omega2-pro-base
+Version: 1.0.3-1
+Depends: libc, fdisk, e2fsprogs, block-mount, swap-utils, tar
+Source: feeds/onion/omega2pro
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1319
+Filename: omega2-pro-base_1.0.3-1_mipsel_24kc.ipk
+Size: 2052
+SHA256sum: 8e2e74ad40a422b9aea1930b70b978210006980199c8d7b15069a1b1e852b260
+Description:  Omega2 Pro base packages and configuration
+
+Package: onion-console-base
+Version: 0.1.4-2
+Depends: libc, rpcd
+Source: feeds/onion/onion-console
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1295489
+Filename: onion-console-base_0.1.4-2_mipsel_24kc.ipk
+Size: 1294708
+SHA256sum: 3b71c955c40c3bef25bd89c49b4166b85ee1f0fc769964b2ac3cc1b084393cd3
+Description:  Web-based virtual desktop for the Omega. Base package, only includes a few Apps. 
+
+Package: onion-helper
+Version: 0.1-1
+Depends: libc, libubox, libubus, libcurl
+Source: feeds/onion/onion-helper
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 4170
+Filename: onion-helper_0.1-1_mipsel_24kc.ipk
+Size: 4867
+SHA256sum: ce55aba4b52f4f6dbf69a709f892a1300e47dbc8dacdb2b9d475cadd5ec8a66e
+Description:  C-based ubus service to implement various features on OpenWRT
+
+Package: onion-node-red
+Version: 0.19.5-1
+Depends: libc, libpthread, libstdcpp, node
+Source: feeds/onion/onion-node-red
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 10757269
+Filename: onion-node-red_0.19.5-1_mipsel_24kc.ipk
+Size: 10698693
+SHA256sum: 424537691ff9212b3653b483739481beb3930120f14861a89720af19dbe49c41
+Description:  Flow-based development tool for visual programming
+
+Package: onion-os
+Version: 1.0.6-1
+Depends: libc, shellinabox
+Source: feeds/onion/onion-os
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 505728
+Filename: onion-os_1.0.6-1_mipsel_24kc.ipk
+Size: 506581
+SHA256sum: 6e0f5df18a0ce0a8bb3953d55cfc3b57a49eae7368fcca67bd89b566ab02982b
+Description:  OnionOS for headless IoT devices
+
+Package: onion-repo-keys
+Version: 0.1-1
+Depends: libc, usign
+Source: feeds/onion/onion-repo-keys
+License: GPL-2.0
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 389
+Filename: onion-repo-keys_0.1-1_mipsel_24kc.ipk
+Size: 1083
+SHA256sum: 7a3619691dfe1b760701a95a9ce62cae9e5ebda808f81b77da723f52ff71ddc1
+Description:  Signature keys required for Onion Package Repo
+
+Package: onion-script
+Version: 0.3-8
+Depends: libc, wget, bc
+Source: feeds/onion/onion-script
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 7806
+Filename: onion-script_0.3-8_mipsel_24kc.ipk
+Size: 8516
+SHA256sum: 098e5257b9a10ec425c1898eaf2a735c4e9e38800a10fbdee1d01f4f7075e6d1
+Description:  Command to help with Onion product automation
+
+Package: onion-sh-lib
+Version: 0.2-1
+Depends: libc, libubox
+Source: feeds/onion/onion-sh-lib
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1898
+Filename: onion-sh-lib_0.2-1_mipsel_24kc.ipk
+Size: 2609
+SHA256sum: eaeb1df9e126681075eac0cce7424bfb3550d611367fc26767020e725176beb9
+Description:  Library of commonly used code for the Omega
+
+Package: onion-ubus
+Version: 0.3-2
+Depends: libc, rpcd, iwinfo, oupgrade, libugpio
+Source: feeds/onion/onion-ubus
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 4176
+Filename: onion-ubus_0.3-2_mipsel_24kc.ipk
+Size: 4890
+SHA256sum: 5414cc14f4400fc28b28f618aa8c0a3ea17b6a415bd04fa4e95ff7b57d9eeef2
+Description:  Collection of Onion ubus tools
+
+Package: oos-app-code-editor
+Version: 1.0.4-1
+Depends: libc, php7, php7-mod-session, php7-fastcgi, php7-mod-json, php7-mod-curl, php7-mod-xml, php7-mod-simplexml, php7-mod-mbstring, php7-mod-openssl, php7-mod-zip
+Source: feeds/onion/oos-app-editor
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 2112882
+Filename: oos-app-code-editor_1.0.4-1_mipsel_24kc.ipk
+Size: 2077086
+SHA256sum: 46a1675297fbe907a5ed58a57c3722ba7d69931726abd7f3728f50853ef51463
+Description:  Code Editor : File browser and code editor
+
+Package: oos-app-legacy-console
+Version: 0.1.4-1
+Depends: libc, onion-console-base
+Source: feeds/onion/oos-app-legacy-console
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 951
+Filename: oos-app-legacy-console_0.1.4-1_mipsel_24kc.ipk
+Size: 1659
+SHA256sum: dced108cb1d99e9b2dd359ce6183c735beaf56cf83fc8f52dee36acc6c53bcba
+Description:  Legacy Console : The first generation Onion Console
+
+Package: oos-app-nfc-rfid-expansion
+Version: 1.0.1-1
+Depends: libc, nfc-exp
+Source: feeds/onion/oos-app-rfid
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 209706
+Filename: oos-app-nfc-rfid-expansion_1.0.1-1_mipsel_24kc.ipk
+Size: 210234
+SHA256sum: 87382c794c111a8a65fa9763755518d9ab2af034328267d17dfcc90c20796854
+Description:  NFC-RFID Expansion : Real-time scanning of RFID tags
+
+Package: oos-app-nodered
+Version: 1.0.0-1
+Depends: libc, onion-node-red
+Source: feeds/onion/oos-app-nodered
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1757
+Filename: oos-app-nodered_1.0.0-1_mipsel_24kc.ipk
+Size: 2477
+SHA256sum: 97fec7dc91c6a88cf6b37edee4757e4327e6ecc44298b5993bbf2587bd8cd26f
+Description:  Node-Red : Node-Red Graphical Programming interface [Omega2 Pro]
+
+Package: oos-app-power-dock-2
+Version: 1.0.1-1
+Depends: libc, power-dock2
+Source: feeds/onion/oos-app-power-dock-2
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 353400
+Filename: oos-app-power-dock-2_1.0.1-1_mipsel_24kc.ipk
+Size: 353688
+SHA256sum: a98d009a4150c0f6f6d86c4dcbeab287fab9589247b41d1b13559040f0f7425d
+Description:  Power Dock 2 : Measuring and logging LiPo battery level with the Power Dock 2
+
+Package: oos-app-sensor-monitor
+Version: 1.0.1-1
+Depends: libc, adc-exp
+Source: feeds/onion/oos-app-sensor-monitor
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 92302
+Filename: oos-app-sensor-monitor_1.0.1-1_mipsel_24kc.ipk
+Size: 93084
+SHA256sum: 3fb620defa6a7a191962b40a6c5e6775f919f5c3546cf2bc0eff2c414a9856af
+Description:  Sensor Monitor : Sensor measurement dashboard
+
+Package: oos-app-sparkfun-qwiic
+Version: 1.0.0-2
+Depends: libc, libonioni2c, libmosquitto-ssl
+Source: feeds/onion/oos-app-sparkfun-qwiic
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 651769
+Filename: oos-app-sparkfun-qwiic_1.0.0-2_mipsel_24kc.ipk
+Size: 652538
+SHA256sum: f5cc62a91d4d363ab836c24376ef5c4c696ece5f8e3f62f1cec00475b1bab930
+Description:  Sparkfun Qwiic : Detect and interact with Sparkfun Qwiic devices
+
+Package: oos-app-timelapse-camera
+Version: 1.0.1-1
+Depends: libc, mjpg-streamer, onion-script, curl, ca-bundle
+Source: feeds/onion/oos-app-camera
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 207320
+Filename: oos-app-timelapse-camera_1.0.1-1_mipsel_24kc.ipk
+Size: 207788
+SHA256sum: 9120f0dd7eb333d1a3b74e3a7f4d260b4878ad93ac9ef8415b73fef25321245b
+Description:  Timelapse Camera : View camera stream and setup timelapse capture
+
+Package: oupgrade
+Version: 0.4-3
+Depends: libc, wget
+Source: feeds/onion/oupgrade
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 5532
+Filename: oupgrade_0.4-3_mipsel_24kc.ipk
+Size: 6202
+SHA256sum: 8838014728d73ec994510765548ba8bc7c8a659dc82a71e0b427a313a44f1f50
+Description:  Tool to upgrade device firmware with latest from Onion repo
+
+Package: p44-ledchain
+Version: 2.0-7
+Depends: libc, kmod-p44-ledchain
+Source: feeds/onion/p44-ledchain
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 199
+Filename: p44-ledchain_2.0-7_mipsel_24kc.ipk
+Size: 905
+SHA256sum: f8a5207fc3ee1b963f6d03de070d8191c90e7beecad97c7304ebd3f397abd122
+Description:  Implements p44-ledchain kernel driver for WS28xx and SK68xx type serial LED chains for MT7688
+
+Package: power-dock2
+Version: 0.5-1
+Depends: libc, power-dock, bc
+Source: feeds/onion/power-dock
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1309
+Filename: power-dock2_0.5-1_mipsel_24kc.ipk
+Size: 2001
+SHA256sum: fe642f2b75f1af2a4ea990bd1683ad8ffdf9773333625a0e51144656e2f01628
+Description:  Onion Power Dock 2 application
+
+Package: power-dock
+Version: 0.5-1
+Depends: libc, libugpio, liboniondebug
+Source: feeds/onion/power-dock
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 2731
+Filename: power-dock_0.5-1_mipsel_24kc.ipk
+Size: 3391
+SHA256sum: b0f44fa7452ade9909dd711afab09ca3adff19715ad4a0967b1ef3c52f737962
+Description:  Onion Power Dock Application
+
+Package: pwm-exp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionpwmexp
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3732
+Filename: pwm-exp_0.9-1_mipsel_24kc.ipk
+Size: 4419
+SHA256sum: 84ae415dc1d4dbb3901bf8134c8b872393e175fb843e2cf780e3ee6ea88cfcd4
+Description:  Driver for Servo (PWM) Expansion
+
+Package: pyOledExp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionoledexp, python-base, pyOmegaExpansion
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3027
+Filename: pyOledExp_0.9-1_mipsel_24kc.ipk
+Size: 3728
+SHA256sum: 92512c0acb3e092937f93504469c75d2c60ebc59cc9e041d3055f3764e8b20cc
+Description:  Python module to control the Onion OLED Expansion
+
+Package: pyOmegaExpansion
+Version: 0.9-1
+Depends: libc, python-base
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 225
+Filename: pyOmegaExpansion_0.9-1_mipsel_24kc.ipk
+Size: 908
+SHA256sum: 36e0a3b88d09d9f99ec4d27d36b2448a8181da7c158129dc66f15492930e8e92
+Description:  Setup for OmegaExpansion Python Package
+
+Package: pyOnionGpio
+Version: 0.2-1
+Depends: libc, python-base
+Source: feeds/onion/onion-gpio-sysfs
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1347
+Filename: pyOnionGpio_0.2-1_mipsel_24kc.ipk
+Size: 2099
+SHA256sum: 21a5a8452b238c3372318eec040fa50622e3f43887c2e6110e5033f69fa306a2
+Description:  Python module with object that implements programming the GPIOs via the sysfs interface
+
+Package: pyOnionI2C
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, python-base, pyOmegaExpansion
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3538
+Filename: pyOnionI2C_0.9-1_mipsel_24kc.ipk
+Size: 4243
+SHA256sum: a3f177b13d482aa25bf75794e9092a7b18533f7225f046b6c1528c420935dba9
+Description:  Python module with object that implements I2C transactions
+
+Package: pyPwmExp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionpwmexp, python-base, pyOmegaExpansion
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3650
+Filename: pyPwmExp_0.9-1_mipsel_24kc.ipk
+Size: 4368
+SHA256sum: 75b519942a908fd21115485b8cdf57e1e0aecab6249f66145809be92008ae98a
+Description:  Python module to control the Onion PWM Expansion
+
+Package: pyRelayExp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionmcp23008, libonionrelayexp, python-base, pyOmegaExpansion
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 2030
+Filename: pyRelayExp_0.9-1_mipsel_24kc.ipk
+Size: 2778
+SHA256sum: 03934c8f59278dc8c80e4bea12f478af338db00800831cd7b9e856c9de089348
+Description:  Python module to control the Onion Relay Expansion
+
+Package: python-adc-exp
+Version: 0.3-3
+Depends: libc, python-base, pyOmegaExpansion
+Source: feeds/onion/adc-exp
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 4618
+Filename: python-adc-exp_0.3-3_mipsel_24kc.ipk
+Size: 5321
+SHA256sum: 5fc78786132133349ebb81151c4aec420fd6a0773702ad1febe8c1ef0ed1fb98
+Description:  Python module to interact with Onion ADC Expansion
+
+Package: python-spidev
+Version: 4.0.1-2
+Depends: libc, python-base
+Source: feeds/onion/python-spidev
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 6544
+Filename: python-spidev_4.0.1-2_mipsel_24kc.ipk
+Size: 7243
+SHA256sum: b029a56135c727160c408ac8a4046e99f68ac7ca784f5c3334d1c320dc1bce00
+Description:  Python module with object that implements SPI transactions
+
+Package: python3-adc-exp
+Version: 0.3-3
+Depends: libc, python3-base, python3-omega-expansion, python3-onion-i2c
+Source: feeds/onion/adc-exp
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 4618
+Filename: python3-adc-exp_0.3-3_mipsel_24kc.ipk
+Size: 5318
+SHA256sum: 9f86cdcb9a55558ff0793eb24fcd42df96315b8884ec50b15eb44bf8e1233ee2
+Description:  Python3 module to interact with Onion ADC Expansion
+
+Package: python3-oled-exp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionoledexp, python3-base, python3-omega-expansion
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3068
+Filename: python3-oled-exp_0.9-1_mipsel_24kc.ipk
+Size: 3787
+SHA256sum: c166be403cc0333af9e24ef39a3935c06d363a51c62eec544b4f19229e9dd2ee
+Description:  Python3 module to control the Onion OLED Expansion
+
+Package: python3-omega-expansion
+Version: 0.9-1
+Depends: libc, python3-base
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 225
+Filename: python3-omega-expansion_0.9-1_mipsel_24kc.ipk
+Size: 909
+SHA256sum: 66924ac51a44cc0b60a61228d71eb1c6525adb1406ee941bdf0a406f22516e00
+Description:  Setup for OmegaExpansion Python3 Package
+
+Package: python3-onion-i2c
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, python3-base, python3-omega-expansion
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3619
+Filename: python3-onion-i2c_0.9-1_mipsel_24kc.ipk
+Size: 4323
+SHA256sum: 2ab7a3c4ca8064c65e12b67c0ee8518e7581909ab9ce37cb7b9ccc18b114078d
+Description:  Python3 module that implements I2C transactions
+
+Package: python3-pwm-exp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionpwmexp, python3-base, python3-omega-expansion
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3678
+Filename: python3-pwm-exp_0.9-1_mipsel_24kc.ipk
+Size: 4399
+SHA256sum: cf605fd313218782b95695aa43c518ca197bf1a4537ebe64451faae52884af51
+Description:  Python3 module to control the Onion PWM Expansion
+
+Package: python3-relay-exp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionmcp23008, libonionrelayexp, python3-base, python3-omega-expansion
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 2058
+Filename: python3-relay-exp_0.9-1_mipsel_24kc.ipk
+Size: 2814
+SHA256sum: 34bbbd8f4e4950b45dd5ca50b0fc5b8a8809f1ac0088f9f02ca403c2642a6d5b
+Description:  Python3 module to control the Onion Relay Expansion
+
+Package: python3-spidev
+Version: 4.0.1-2
+Depends: libc, python3-base
+Source: feeds/onion/python-spidev
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 6516
+Filename: python3-spidev_4.0.1-2_mipsel_24kc.ipk
+Size: 7219
+SHA256sum: 1c9047b9b869f13d2ac8f6270a0032bcf59ef0355d36063d39506401c63dc372
+Description:  Python3 module with object that implements SPI transactions
+
+Package: relay-exp
+Version: 0.9-1
+Depends: libc, liboniondebug, libonioni2c, libonionmcp23008, libonionrelayexp
+Source: feeds/onion/i2c-exp-driver
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3753
+Filename: relay-exp_0.9-1_mipsel_24kc.ipk
+Size: 4434
+SHA256sum: e152d32637e63732529e6091eba6409a58196f0bffa460e3df4f551e53411147
+Description:  Driver for Relay Expansion
+
+Package: shellinabox
+Version: 2.10-1
+Depends: libc, zlib
+Source: feeds/onion/shellinabox
+Section: net
+Architecture: mipsel_24kc
+Installed-Size: 91455
+Filename: shellinabox_2.10-1_mipsel_24kc.ipk
+Size: 91312
+SHA256sum: 408db9d53519221d0e56c2c40b303a4081a430bb30aaa506a8bcec450386cab0
+Description:  Web based AJAX terminal emulator
+
+Package: ubidots-client
+Version: 0.2-1
+Depends: libc, libcurl, libjson-c
+Source: feeds/onion/ubidots-client
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 3094
+Filename: ubidots-client_0.2-1_mipsel_24kc.ipk
+Size: 3769
+SHA256sum: 9118f000a429b61d19a7eaf52efa70cdf836d43eb655b820e3be99b05dd5f76d
+Description:  Client for sending date points to Ubidots cloud
+
+Package: url-enc-dec
+Version: 0.1-1
+Depends: libc, libcurl
+Source: feeds/onion/url-enc-dec
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 1854
+Filename: url-enc-dec_0.1-1_mipsel_24kc.ipk
+Size: 2533
+SHA256sum: 23c78c0792bed91cc93af1271a64ad500635ecb6468d42ef857ba03e405abd06
+Description:  Command line tools for URL encoding and decoding strings
+
+Package: wifi-warp-core
+Version: 0.1.0-1
+Depends: libc, wireless-tools, maccalc, libuci, coreutils-base64, libcurl
+Source: feeds/onion/wifi-warp-core
+License: GPL-2.0
+Section: onion
+Architecture: mipsel_24kc
+Installed-Size: 794625
+Filename: wifi-warp-core_0.1.0-1_mipsel_24kc.ipk
+Size: 788219
+SHA256sum: 5d6d0bc7772ce69f660278daa23a51a5377c53b709506ffce89e7e5369450d57
+Description:  Onion's Enhanced Omega2 MT7688 WiFi Driver
+
