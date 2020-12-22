@@ -8,17 +8,19 @@ ncd.io PR55-36 firmware
 
 Installing firmware in gateway
 
-Supply power to the gateway and waits for 1 minutes.
+1. Supply power to the gateway and waits for 1 minutes.
 
-(recommended) Connect the gateway to the network using Ethernet
+2. (recommended) Connect the gateway to the network using Ethernet
 
-If the Omega module is modified previously, performs factory reset.
+3. performs factory reset.
+firstboot -y
+reboot
 
-Connect the Omega module to the PC via a USB cable and opens up a serial terminal.
+4. Connect the Omega module to the PC via a USB cable and opens up a serial terminal.
 
-Plug in the setup USB key, waits for the USB key is recognized.
+5. Plug in the setup USB key, waits for the USB key is recognized.
 
-Run the setup script:
+6. Run the setup script:
  # /mnt/sda1/setup.sh
 If the gateway is not connected to the network, choose N for Node Red package installation step.
 
