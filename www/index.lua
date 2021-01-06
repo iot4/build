@@ -1724,19 +1724,19 @@ function handle_request(env)
                     os.execute('uci set ncd.control.sta_state=down')
                     os.execute('uci set ncd.control.lte_state=down')
                     os.execute('uci commit ncd')
-                    os.execute('/root/bin/enable_network eth')
+                    os.execute('/root/bin/enable_network.lua eth')
                 elseif post['select'] == 'sta' then
                     os.execute('uci set ncd.control.eth_state=down')
                     os.execute('uci set ncd.control.sta_state=up')
                     os.execute('uci set ncd.control.lte_state=down')
                     os.execute('uci commit ncd')
-                    os.execute('/root/bin/enable_network sta')
+                    os.execute('/root/bin/enable_network.lua sta')
                 elseif post['select'] == 'lte' then
                     os.execute('uci set ncd.control.eth_state=down')
                     os.execute('uci set ncd.control.sta_state=down')
                     os.execute('uci set ncd.control.lte_state=up')
                     os.execute('uci commit ncd')
-                    os.execute('/root/bin/enable_network lte')
+                    os.execute('/root/bin/enable_network.lua lte')
                 end
 
                 local message = post['select'] .. ' will be enabled'
