@@ -13,4 +13,4 @@ echo " * installing ncd-red-wireless"
 node -max_old_space_size=512 $(which npm) install ncd-red-wireless
 
 echo " * installing node-red-dashboard"
-node -max_old_space_size=512 $(which npm) install node-red-dashboard
+node -max_old_space_size=512 $(which npm) install node-red-dashboard@2.30.0
